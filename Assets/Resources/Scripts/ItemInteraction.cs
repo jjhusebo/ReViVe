@@ -40,5 +40,6 @@ public class ItemInteraction : MonoBehaviour {
 
     public void PointerDown()
     {
+        DestroyObject(gameObject);
     }
 }
