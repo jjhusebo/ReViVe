@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour {
+public class LoadLevel : MonoBehaviour {
+    public string levelToLoad;
 
-    private Animator animator;
 	// Use this for initialization
 	void Start () {
-        animator = GetComponent<Animator>();
-    }
+		
+	}
 	
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if(other.tag == "Player")
         {
-            animator.SetBool("open", true);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(levelToLoad);
         }
     }
 
 	// Update is called once per frame
 	void Update () {
-    }
+		
+	}
 }
