@@ -9,13 +9,10 @@ public class OpenDoor : MonoBehaviour {
 	void Start () {
         animator = GetComponent<Animator>();
     }
-	
-    void OnTriggerEnter(Collider other)
+
+    public void openDoor()
     {
-        if (other.tag == "Player")
-        {
             animator.SetBool("open", true);
-        }
     }
 
 	// Update is called once per frame
