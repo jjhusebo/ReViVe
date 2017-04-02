@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Item : MonoBehaviour {
     public GameObject item;
@@ -22,10 +23,8 @@ public class Item : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (gazedAt) {
-            timer += Time.deltaTime;
-            if (timer >= gazeTime) {
+            if (CrossPlatformInputManager.GetButtonDown("Interact")) {
                 ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
-                timer = 0f;
             }
         }
     }

@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour {
+public class ElectronScript : MonoBehaviour {
 
-    private Animator animator;
+    Animator animator;
+    public float offset;
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
-    }
-
-    public void openDoor()
-    {
-            animator.SetBool("open", true);
-    }
-
+        animator.Play("Electron", -1, offset);
+	}
+	
 	// Update is called once per frame
 	void Update () {
-    }
+		
+	}
 }
