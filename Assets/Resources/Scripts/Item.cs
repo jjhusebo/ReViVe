@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class Item : MonoBehaviour {
-    public GameObject item;
-    public Sprite icon;
     public bool canPickUp = true;
     public Transform player;
     public float gazeTime = 2f;
@@ -17,7 +15,7 @@ public class Item : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        player = GameObject.Find("PlayerWithMovement").transform;
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
