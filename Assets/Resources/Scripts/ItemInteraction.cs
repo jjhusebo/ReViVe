@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class ItemInteraction : MonoBehaviour {
     public float gazeTime = 2f;
@@ -19,11 +20,9 @@ public class ItemInteraction : MonoBehaviour {
     void Update() {
         if (gazedAt)
         {
-            timer += Time.deltaTime;
-            if (timer >= gazeTime)
+            if (CrossPlatformInputManager.GetButtonDown("Interact"))
             {
                 ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
-                timer = 0f;
             }
         }
     }
