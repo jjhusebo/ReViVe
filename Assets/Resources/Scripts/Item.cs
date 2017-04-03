@@ -12,17 +12,29 @@ public class Item : MonoBehaviour {
 
     private float timer;
     private bool gazedAt;
+    private bool held;
 
     // Use this for initialization
     void Start() {
         player = GameObject.Find("Player").transform;
+        held = false;
     }
 
     // Update is called once per frame
     void Update() {
         if (gazedAt) {
             if (CrossPlatformInputManager.GetButtonDown("Interact")) {
-                ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
+                ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+            }
+        }
+        else if(transform.parent != null)
+        {
+            if (CrossPlatformInputManager.GetButtonDown("Interact"))
+            {
+                transform.parent = null;
+                transform.GetComponent<Collider>().enabled = true;
+                transform.GetComponent<Rigidbody>().useGravity = true;
+
             }
         }
     }
@@ -35,11 +47,11 @@ public class Item : MonoBehaviour {
         gazedAt = false;
     }
 
-    public void PointerDown() {
+    public void PointerClick() {
 
         if (player.Find("Main Camera").FindChild("Inventory").childCount == 0) { 
             if (canPickUp) {
-                transform.parent = player.Find("Main Camera").FindChild("Inventory").transform;
+                transform.parent = player.Find("Main Camera").transform.FindChild("Inventory").transform;
                 transform.GetComponent<Collider>().enabled = false;
                 transform.GetComponent<Rigidbody>().useGravity = false;
                 transform.SetPositionAndRotation(transform.parent.position, transform.parent.rotation);
