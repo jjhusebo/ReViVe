@@ -9,7 +9,7 @@ Relevant documentation: <br>
 
 # Quick and Dirty setup guide
 
-1. Download and install <a href="https://unity3d.com/unity/beta">Unity 5.6 beta</a> <br>
+1. Download and install <a href="https://unity3d.com">Unity 5.6</a> <br>
 2. Clone repository <br>
 3. Download the <a href="https://developers.google.com/vr/unity/download">Google VR SDK</a> <br>
 4. Open GoogleVRforUnity.unitypackage <br>
