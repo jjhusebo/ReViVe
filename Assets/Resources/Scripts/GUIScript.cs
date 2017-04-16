@@ -11,7 +11,7 @@ public class GUIScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (CrossPlatformInputManager.GetButtonDown("Horizontal") || CrossPlatformInputManager.GetButtonDown("Vertical") ) {
+		if (CrossPlatformInputManager.GetAxis("Horizontal") > 0 || CrossPlatformInputManager.GetAxis("Vertical") > 0  || CrossPlatformInputManager.GetButtonDown("Horizontal") || CrossPlatformInputManager.GetButtonDown("Vertical") ) {
 			firstPlayTutorial.SetActive(false);
 		}
 
