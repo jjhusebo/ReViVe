@@ -6,16 +6,16 @@ public class MachineScript : MonoBehaviour {
 
     public GameObject circuit;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.name == "Battery")
         {
             Debug.Log("Battery on trigger!");
             circuit.GetComponent<CircuitScript>().turnOn();
+            other.GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
@@ -25,6 +25,7 @@ public class MachineScript : MonoBehaviour {
         {
             Debug.Log("Battery removed!");
             circuit.GetComponent<CircuitScript>().turnOff();
+            other.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 
